@@ -1,0 +1,23 @@
+{
+  "name": "playwright_js_ts",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/3dendroid/playwright_js_ts.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/3dendroid/playwright_js_ts/issues"
+  },
+  "homepage": "https://github.com/3dendroid/playwright_js_ts#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.63.0",
+    "@types/node": "^26.6.2"
+  }
+}
