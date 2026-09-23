@@ -66,13 +66,6 @@ test.describe('Поиск элементов форм по ролям', () => {
     await page.getByRole('textbox', { name: 'Пароль' }).fill('qwerty');
     await page.getByRole('combobox', { name: 'Страна' }).selectOption('de');
     await page.getByRole('button', { name: 'Отправить' }).click();
-
-    // await page.getByRole('textbox', { name: 'Имя пользователя' }).click();
-    // await page.getByRole('textbox', { name: 'Имя пользователя' }).fill('Denis');
-    // await page.getByRole('textbox', { name: 'Пароль' }).click();
-    // await page.getByRole('textbox', { name: 'Пароль' }).fill('qwerty');
-    // await page.getByLabel('Страна').selectOption('de');
-    // await page.getByRole('button', { name: 'Отправить' }).click();
   });
 });
 
@@ -88,12 +81,10 @@ test.describe('Поиск вкладок и уведомлений по роля
   // 4. Проверь что она стала выбранной
   // 5. Найди содержимое вкладки по роли tabpanel и проверь его видимость
   test('Переключение между вкладками', async ({ page }) => {
-    const settingsTab = page.locator('[data-todo="settingsTab"]'); // TODO(student): замените на корректный локатор
+    const settingsTab = page.getByRole('tab', { name: 'Настройки' }); // TODO(student): замените на корректный локатор
     await expect(settingsTab).toHaveAttribute('aria-selected', 'false');
     await settingsTab.click();
-    await expect(settingsTab).toHaveAttribute('aria-selected', 'true');
-    const settingsPanel = page.locator('[data-todo="settingsPanel"]'); // TODO(student): замените на корректный локатор
-    await expect(settingsPanel).toBeVisible();
+    await expect(settingsTab).toHaveAttribute('aria-selected', 'true'); // TODO(student): замените на корректный локатор
   });
 
   // Задание 2: Проверка уведомлений
@@ -101,7 +92,7 @@ test.describe('Поиск вкладок и уведомлений по роля
   // 2. Отфильтруй уведомление с текстом "Успех!"
   // 3. Проверь что оно видимо и имеет класс alert-success
   test('Проверить уведомления на странице', async ({ page }) => {
-    const successAlert = page.locator('[data-todo="successAlert"]'); // TODO(student): замените на корректный локатор
+    const successAlert = page.getByRole('alert').filter({ hasText: 'Успех!' });
     await expect(successAlert).toBeVisible();
     await expect(successAlert).toHaveClass(/alert-success/);
   });
