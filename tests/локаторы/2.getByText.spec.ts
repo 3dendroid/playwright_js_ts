@@ -59,14 +59,16 @@ test.describe('Сложные случаи поиска по тексту', () =
   // Задание 2: Дождись появления динамического текста и найди его
   // Проверь что текст появился через 1 секунду
   test('Работа с динамическим контентом', async ({ page }) => {
-    const dynamicText = page.locator('[data-todo="dynamicText"]'); // TODO(student): замените на корректный локатор
+    const dynamicText = page.getByText(
+      'Динамически загружаемый текст Динамически загруженный текст Этот текст появился ',
+    ); // TODO(student): замените на корректный локатор
     await expect(dynamicText).toBeVisible({ timeout: 2000 });
   });
 
   // Задание 3: Найди текст с множественными пробелами
   // Используй регулярное выражение для поиска
   test('Найти текст с пробелами', async ({ page }) => {
-    const spacedText = page.locator('[data-todo="spacedText"]'); // TODO(student): замените на корректный локатор
+    const spacedText = page.getByText('Текст с множественными пробелами'); // TODO(student): замените на корректный локатор
     await expect(spacedText).toBeVisible();
   });
 });
